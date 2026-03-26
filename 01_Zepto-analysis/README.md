@@ -150,8 +150,9 @@ zepto-analysis/
 ├── requirements.txt                   # Python dependencies
 │
 ├── data/
-│   ├── raw/
-│   │   └── zepto_v2.csv              
+│   ├── zepto_v1.xlsx                  
+│   └── zepto_v2.csv              
+│
 ├── notebooks/
 │   └── zepto-analysis-with-problem-statements.ipynb  # Complete analysis
 │
