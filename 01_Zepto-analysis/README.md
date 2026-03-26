@@ -33,6 +33,19 @@ The analysis combines **exploratory data analysis (EDA)**, **statistical insight
 - **Time Period**: Current inventory snapshot
 - **Data Quality**: Cleaned and preprocessed
 
+ #### Dataset Description
+
+The dataset contains the following features:
+
+- Category – Product category (e.g., Fruits, Dairy, Snacks)
+- name – Product name
+- mrp – Maximum Retail Price
+- discountPercent – Discount applied (%)
+- availableQuantity – Current stock level
+- discountedSellingPrice – Final selling price
+- weightInGms – Product weight
+- outOfStock – Stock availability flag
+- quantity – Units sold
 ---
 
 ## 💡 Key Insights
