@@ -108,8 +108,8 @@ import ipywidgets as widgets
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/vanshR18/Analysis-Projects/tree/main/02_IPL%20First%20Innings%20Score%20Predictor
-cd ipl-score-predictor
+git clone https://github.com/vanshR18/Analysis-Projects.git
+cd "Analysis-Projects/02_IPL First Innings Score Predictor"
 ```
 
 ### 2. Install dependencies
