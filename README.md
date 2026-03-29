@@ -10,4 +10,4 @@
 
 ### 2. IPL First Innings Score Predictor
 - This project builds a machine learning model on ball-by-ball IPL data (2008–2019) to predict the final first innings score based on live match conditions like current overs, runs, wickets, and recent scoring rate. Four regression models are compared — Linear Regression, Decision Tree, Random Forest, and AdaBoost — with an interactive widget to predict scores without writing any code.
-- *** 📁 [**View Project Details**](./02_IPL%20First%20Innings%20Score%20Predictor)
+- **📁 [**View Project Details**](./02_IPL%20First%20Innings%20Score%20Predictor)**
