@@ -151,7 +151,3 @@ jupyter
 - Prediction accuracy is lower in early overs (before over 10)
 
 ---
-
-## 📃 License
-
-This project is open source and available under the [MIT License](LICENSE).
