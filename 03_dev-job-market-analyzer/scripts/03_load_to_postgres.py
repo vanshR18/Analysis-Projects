@@ -1,5 +1,5 @@
 """
-Script 03 — Clean salary benchmarks and layoffs
+Cleaning salary benchmarks and layoffs
 """
 import pandas as pd
 import numpy as np
@@ -8,7 +8,7 @@ from pathlib import Path
 RAW       = Path("data/raw")
 PROCESSED = Path("data/processed")
 
-# ── 1. ds_salaries.csv → salary_benchmarks_clean.csv ─────────────────────────
+# 1. ds_salaries.csv → salary_benchmarks_clean.csv 
 print("Cleaning ds_salaries.csv...")
 sal = pd.read_csv(RAW / "ds_salaries.csv")
 
@@ -50,7 +50,7 @@ sal.to_csv(PROCESSED / "salary_benchmarks_clean.csv", index=False)
 print(f"Saved salary_benchmarks_clean.csv — {len(sal):,} rows")
 print(sal[["year","role_family","salary_usd","work_mode"]].head(3).to_string(index=False))
 
-# ── 2. layoffs.csv → layoffs_clean.csv ───────────────────────────────────────
+# 2. layoffs.csv → layoffs_clean.csv 
 print("\nCleaning layoffs.csv...")
 lay = pd.read_csv(RAW / "layoffs.csv")
 
