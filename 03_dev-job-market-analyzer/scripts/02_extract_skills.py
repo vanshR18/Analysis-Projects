@@ -1,9 +1,6 @@
 """
-Script 02 — Build job_postings_with_skills.csv
-
 The LinkedIn dataset already has job_skills.csv (job_id + skill_abr)
-and skills.csv (skill_abr + skill_name), so we JOIN them instead of
-regex-parsing descriptions. Much cleaner and more accurate.
+
 """
 import pandas as pd
 from pathlib import Path
@@ -20,13 +17,13 @@ print(f"Postings  : {len(postings):,}")
 print(f"Job-skills: {len(job_skills):,}")
 print(f"Skills ref: {len(skills_ref):,}")
 
-# ── 1. Merge skill_abr → skill_name ──────────────────────────────────────────
+# 1. Merge skill_abr → skill_name 
 job_skills = job_skills.merge(skills_ref, on="skill_abr", how="left")
 
-# ── 2. Normalise skill names → lowercase for consistency ─────────────────────
+# 2. Normalise skill names → lowercase for consistency 
 job_skills["skill_name"] = job_skills["skill_name"].str.strip().str.lower()
 
-# ── 3. Aggregate skills per job_id into comma-separated string ───────────────
+# 3. Aggregate skills per job_id into comma-separated string 
 skills_agg = (job_skills.groupby("job_id")["skill_name"]
               .apply(lambda x: ",".join(x.dropna().unique()))
               .reset_index()
@@ -34,12 +31,12 @@ skills_agg = (job_skills.groupby("job_id")["skill_name"]
 
 print(f"Jobs with skill data: {len(skills_agg):,}")
 
-# ── 4. Merge back onto postings ───────────────────────────────────────────────
+# 4. Merge back onto postings 
 df = postings.merge(skills_agg, on="job_id", how="left")
 coverage = df["raw_skills"].notna().mean() * 100
 print(f"Skill coverage: {coverage:.1f}% of postings")
 
-# ── 5. Also flag AI/LLM skills from description for jobs missing skill tags ──
+#  5. Also flag AI/LLM skills from description for jobs missing skill tags 
 AI_KEYWORDS = [
     "langchain","openai","llm","large language model","rag",
     "vector database","huggingface","fine-tuning","prompt engineering",
@@ -57,11 +54,11 @@ def extract_ai_skills(row):
 
 df["raw_skills"] = df.apply(extract_ai_skills, axis=1)
 
-# ── 6. Save ───────────────────────────────────────────────────────────────────
+# 6. Save 
 df.to_csv(PROCESSED / "job_postings_with_skills.csv", index=False)
 print(f"\nSaved job_postings_with_skills.csv — {len(df):,} rows")
 
-# ── 7. Also save the long-format skill table for SQL/Power BI ─────────────────
+# 7. Saving the long-format skill table for SQL/Power BI 
 skills_long = (
     df[["job_id","post_year","post_quarter","role_family","era","raw_skills"]]
     .dropna(subset=["raw_skills"])
